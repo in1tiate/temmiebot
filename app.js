@@ -46,7 +46,7 @@ restart - tem reb00t!!!
         // temmifies given input
         temtext = message.content.replace(config.prefix, '');
         temtext = temtext.replace('temmify ','');
-        rleet = (temtext.length * config.rlmod);
+        rleet = Math.round(temtext.length * config.rlmod);
         console.log(`[INFO] Leetspeak modifier is ${rleet}`);
         checkempty = temtext.replace(' ','');
         if (checkempty !== '') {
@@ -94,7 +94,6 @@ restart - tem reb00t!!!
             client.user.setStatus("invisible");
             console.log('[INFO] Kill command was invoked, destroying client')
             client.destroy();
-            return;
        }
        else {
            console.log(`[WARN] User ${message.author.tag} (ID ${message.author.id}) tried to use\n       a maintenance command, but they have insufficient permissions!`);
