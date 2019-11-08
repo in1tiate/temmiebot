@@ -93,7 +93,7 @@ restart - tem reb00t!!!
             message.channel.send('tem is kil :skull:')
             client.user.setStatus("invisible");
             console.log('[INFO] Kill command was invoked, destroying client')
-            client.destroy();
+            process.kill()
        }
        else {
            console.log(`[WARN] User ${message.author.tag} (ID ${message.author.id}) tried to use\n       a maintenance command, but they have insufficient permissions!`);
