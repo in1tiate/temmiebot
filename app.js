@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const temLib = require('./translator.js');
 var config = {}
 function loadConfig() {
     let rawJSON = fs.readFileSync('settings.json');
@@ -17,7 +18,7 @@ client.on('ready',() => {
 })
 
 client.on('message', message => {
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+    if (!message.content.startsWith(config.prefix) || message.author.bot) {return;}
     if (message.content === config.prefix + 'ping') {
         // returns latency round-trip
         message.channel.send(`pONG!! \`round-trip latency: ${client.ping} ms\``);
@@ -42,17 +43,18 @@ restart - tem reb00t!!!
         // returns uptime in ms as well as the date last ready
         message.channel.send(`oooh... tem ben runing for \`${client.uptime} ms\` since \`${client.readyAt}.\``);
     }
-    if (message.content.match(/tem pls temmify(?!\w)/g)) {
+    if (message.content.startsWith(config.prefix + 'temmify ') || message.content.startsWith(config.prefix + 'temslate ')) {
         // temmifies given input
         temtext = message.content.replace(config.prefix, '');
         temtext = temtext.replace('temmify ','');
+		temtext = temtext.replace('temslate ','');
         rleet = Math.round(temtext.length * config.rlmod);
-        console.log(`[INFO] Leetspeak modifier is ${rleet}`);
+        //console.log(`[INFO] Leetspeak modifier is ${rleet}`);
         checkempty = temtext.replace(' ','');
         if (checkempty !== '') {
-            //temtext = temtext.temslate()
-            message.channel.send(`tem sez ${temtext}`);
-            return;
+            temtext = temLib.temslate(temtext);
+            message.channel.send(`${temtext}`);
+            return; 
         }
         else {
             message.channel.send('oh n0es! u gota say sumthin for tem to temmify!!');
@@ -88,12 +90,12 @@ restart - tem reb00t!!!
             message.channel.send('uh-0h! u dun have permishun to use dat >_>');
         }
     }
-    if (message.content === config.prefix + 'kys') { 
+    if (message.content === config.prefix + 'reset') { 
         if(message.author.id === '180750731756830741') {
-            message.channel.send('tem is kil :skull:')
+            message.channel.send('User authenticated, performing kill command.')
             client.user.setStatus("invisible");
             console.log('[INFO] Kill command was invoked, destroying client')
-            process.kill(0)
+            process.kill(0);
        }
        else {
            console.log(`[WARN] User ${message.author.tag} (ID ${message.author.id}) tried to use\n       a maintenance command, but they have insufficient permissions!`);
