@@ -9,6 +9,7 @@
   "author": "in1tiate",
   "license": "GPLv3",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord.js": "^11.5.1",
+    "nodemon": "^1.19.4"
   }
 }
