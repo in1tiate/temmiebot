@@ -35,7 +35,7 @@ return input;
 .replace(/\breally\b/gi, 'realy')
 .replace(/thing/gi, 'thin')
 .replace(/\bof\b/gi, 'o')
-.replace(/\bgot a\b|\bgotta\b|\bhave a\b/gi, 'gota')
+.replace(/\bgot a\b|\bgotta\b|\bhave a\b|\bhave to\b/gi, 'gota')
 .replace(/\bhave\b/gi, 'hav')
 .replace(/\./gi, ',')
 .replace(/\bsolution\b/gi, 'solushun')
