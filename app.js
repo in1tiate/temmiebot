@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const temLib = require('./translator.js');
+const temLib = require('./temLib.js');
 var config = {}
 function loadConfig() {
     let rawJSON = fs.readFileSync('settings.json');
@@ -45,12 +45,14 @@ restart - tem reb00t!!!
     }
     if (message.content.startsWith(config.prefix + 'temmify ') || message.content.startsWith(config.prefix + 'temslate ')) {
         // temmifies given input
-        temtext = message.content.replace(config.prefix, '');
-        temtext = temtext.replace('temmify ','');
-		temtext = temtext.replace('temslate ','');
+		temtext = message.cleanContent.replace(config.prefix, '').replace('temmify ','').replace('temslate ','');
         rleet = Math.round(temtext.length * config.rlmod);
         //console.log(`[INFO] Leetspeak modifier is ${rleet}`);
         checkempty = temtext.replace(' ','');
+		if (temLib.containsDiscordLink(temtext)) {
+			message.channel.send('oh noes! ur mesage gota discord link in it, so tem cant temslate it. take da link out an try again!');
+			return;
+		}
         if (checkempty !== '') {
             temtext = temLib.temslate(temtext);
             message.channel.send(`${temtext}`);
