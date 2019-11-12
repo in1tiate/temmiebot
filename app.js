@@ -56,6 +56,7 @@ restart - tem reb00t!!!
 		}
         if (checkempty !== '') {
             temtext = temLib.temslate(temtext);
+			temtext = temLib.pass2(temtext);
             message.channel.send(`${temtext}`);
             return; 
         }
