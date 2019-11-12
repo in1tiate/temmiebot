@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const temLib = require('./temLib.js');
 var config = {}
-var ident = 'pepperoni'
+var ident = 'stromboli'
 function loadConfig() {
     let rawJSON = fs.readFileSync('settings.json');
     config = JSON.parse(rawJSON);
