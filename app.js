@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const temLib = require('./temLib.js');
 var config = {}
-var ident = 'stromboli'
+var ident = 'rigatoni'
 function loadConfig() {
     let rawJSON = fs.readFileSync('settings.json');
     config = JSON.parse(rawJSON);
@@ -107,14 +107,8 @@ restart - tem reb00t!!!
        }
     }
     if (message.content === config.prefix + 'identify') { 
-        if(message.author.id === '180750731756830741') {
             message.channel.send(`Current ident code is \`${ident}\`.`);
             return;
-       }
-       else {
-           console.log(`[WARN] User ${message.author.tag} (ID ${message.author.id}) tried to use\n       a maintenance command, but they have insufficient permissions!`);
-           message.channel.send('uh-0h! u dun have permishun to use dat >︿>');
-       }
     }
     if (message.content === config.prefix + 'refresh config'||message.content === config.prefix + 'reload config') { 
        if(message.member.roles.has(config.speshulRole) || message.author.id === '180750731756830741') {
