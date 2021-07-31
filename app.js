@@ -11,7 +11,10 @@ function loadConfig() {
 }
 loadConfig();
 
-
+function denyCommand(message) {
+    console.log(`[WARN] User ${message.author.tag} (ID ${message.author.id}) tried to use\n       a maintenance command, but they have insufficient permissions!`);
+    message.channel.send('uh-0h! u dun have permishun to use dat >_>');
+}
 
 client.on('ready',() => {
     console.log('[INFO] Login successful, client ready');
@@ -90,8 +93,7 @@ restart - tem reb00t!!!
             check();
         }
         else {
-            console.log(`[WARN] User ${message.author.tag} (ID ${message.author.id}) tried to use\n       a maintenance command, but they have insufficient permissions!`);
-            message.channel.send('uh-0h! u dun have permishun to use dat >_>');
+            denyCommand(message);
         }
     }
     if (message.content === config.prefix + 'reset') { 
@@ -102,8 +104,7 @@ restart - tem reb00t!!!
             process.kill(0);
        }
        else {
-           console.log(`[WARN] User ${message.author.tag} (ID ${message.author.id}) tried to use\n       a maintenance command, but they have insufficient permissions!`);
-           message.channel.send('uh-0h! u dun have permishun to use dat >︿>');
+            denyCommand(message);
        }
     }
     if (message.content === config.prefix + 'identify') { 
@@ -123,8 +124,7 @@ restart - tem reb00t!!!
             return;
        }
        else {
-           console.log(`[WARN] User ${message.author.tag} (ID ${message.author.id}) tried to use\n       a maintenance command, but they have insufficient permissions!`);
-           message.channel.send('uh-0h! u dun have permishun to use dat >_>');
+            denyCommand(message);
        }
     }
     // ===MEME COMMANDS=== \\

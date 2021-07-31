@@ -40,7 +40,7 @@ module.exports = {
 		return input;
 	},
 	pass2: function(input) {
-		input = input.replace(/\btem've\b/gi, 'tem has').replace(/\btem'm\b|\btem am\b/gi, 'tem iz').replace(/\bu're\b/gi, 'ur').replace(/\bam tem\b/gi, 'is tem').replace(S/([a-z])\1/gi, function(m) { return m.charAt(0);}).replace(/\bsen\b/gi, 'seen');
+		input = input.replace(/\btem've\b/gi, 'tem has').replace(/\btem'm\b|\btem am\b/gi, 'tem iz').replace(/\bu're\b/gi, 'ur').replace(/\bam tem\b/gi, 'is tem').replace(/([a-z])\1/gi, function(m) { return m.charAt(0);}).replace(/\bsen\b/gi, 'seen');
 		return input;
 	},
 	containsDiscordLink: function(input) {
