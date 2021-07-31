@@ -1,6 +1,6 @@
 module.exports = {
 	temslate: function(input) {
-		input = input.replace(/\bI\b/gi, 'tem')
+		input = input.toLowerCase().replace(/\bI\b/gi, 'tem')
 		.replace(/o/gi, '0')
 		.replace(/\b0f\b/gi, 'o')
 		.replace(/\bhi\b/gi, 'hOI!')
@@ -34,12 +34,13 @@ module.exports = {
 		.replace(/ing/gi, 'in')
 		.replace(/nd/gi, 'n')
 		.replace(/si0n|ti0n/gi, 'shun')
-		.replace(/itch/gi, 'ich');
+		.replace(/itch/gi, 'ich')
+		.replace(/ce/gi, 'se');
 
 		return input;
 	},
 	pass2: function(input) {
-		input = input.replace(/\btem've\b/gi, 'tem has').replace(/\btem'm\b|\btem am\b/gi, 'tem iz').replace(/\bu're\b/gi, 'ur').replace(/\bam tem\b/gi, 'is tem').replace(/([a-z])\1/gi, function(m) { return m.charAt(0);});
+		input = input.replace(/\btem've\b/gi, 'tem has').replace(/\btem'm\b|\btem am\b/gi, 'tem iz').replace(/\bu're\b/gi, 'ur').replace(/\bam tem\b/gi, 'is tem').replace(S/([a-z])\1/gi, function(m) { return m.charAt(0);}).replace(/\bsen\b/gi, 'seen');
 		return input;
 	},
 	containsDiscordLink: function(input) {
