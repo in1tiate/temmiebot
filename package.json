@@ -9,7 +9,9 @@
   "author": "in1tiate",
   "license": "GPLv3",
   "dependencies": {
-    "discord.js": "^11.6.4",
-    "nodemon": "^1.19.4"
+    "bufferutil": "^4.0.3",
+    "discord.js": "^13.1.0",
+    "nodemon": "^2.0.12",
+    "utf-8-validate": "^5.0.5"
   }
 }
